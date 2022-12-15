@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="zh,en">
+<head>
+    <meta charset="UTF-8">
+    <title>欢迎登录</title>
+    <link rel="icon" href="../webs/favicon.ico">
+    <link rel="stylesheet" href="../css/index.css">
+    <style>
+        @font-face{
+            src: url('../webs/font/iconfont.eot');
+        }
+        @font-face{
+            font-family: 'iconfont';
+            src: url('../webs/font1/iconfont.eot');
+            src: url('../webs/font1/iconfont.eot?#iefix') format('embedded-opentype'),
+            url('../webs/font1/iconfont.woff2') format('woff2'),
+            url('../webs/font1/iconfont.woff') format('woff'),
+            url('../webs/font1/iconfont.ttf') format('truetype'),
+            url('../webs/font1/iconfont.svg#iconfont') format('svg');
+        }
+        .iconfont{
+            font-family: "iconfont", serif !important;
+            font-size: 12px;
+            font-style: normal;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            color: #ff4400;
+            margin-top: 50px;
+        }
+        .iconfont a:hover{
+            color: #ff4400;
+        }
+        body{
+            align-items: center;/*居中对齐*/
+            background-color: #fff;
+        }
+        .form{
+            background-color: #ff9308;
+            border-radius: 0 20px 20px 0;
+            box-sizing: border-box;
+            height: 500px;
+            padding: 20px;
+            width: 320px;
+            margin-left: 890px;
+            overflow: hidden;
+        }
+        .QR{
+            width: 0;
+            height: 0;
+        }
+        .QR img{
+            width: 36px;
+            position: absolute;
+            background-color: white;
+            margin-top: -16px;
+            margin-left: -16px;
+        }
+        .QR .triangle{
+            width: 0;
+            height: 0;
+            border: 18px solid transparent;
+            border-right-color: #ff9000;
+            border-bottom-color: #ff9000;
+            position: relative;
+            top: -16px;
+            left: -16px;
+        }
+        .QR .QR-word{
+            width: 95px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            font-weight: bold;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            position: relative;
+            top: -55px;
+            left: 25px;
+            background-color: #ffe583 ;
+            color: #ff9000;
+            overflow: hidden;
+        }
+        .QR .QR-word-triangle{
+            width: 0;
+            height: 0;
+            border: 5px solid;
+            border-color: transparent #fff transparent transparent;
+            position: relative;
+            top: -40px;
+            left: 15px;
+            overflow: hidden;
+        }
+        .title{
+            color: #fff;
+            font-family: sans-serif;
+            font-size: 36px;
+            font-weight: 600;
+            margin-top: 20px;
+        }
+        .subtitle{
+            color: #fff;
+            font-family: sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            margin-top: 5px;
+        }
+        .input-container{
+            height: 50px;
+            position: relative;
+            width: 100%;
+        }
+        .ic1{
+            margin-top: 40px;
+        }
+        .ic2{
+            margin-top: 30px;
+        }
+        .input{
+            background-color: #ccc;
+            border-radius: 12px;
+            border: 0;
+            box-sizing: border-box;
+            color: #000;
+            font-size: 18px;
+            height: 100%;
+            outline: 0;
+            padding: 4px 20px 0;
+            width: 100%;
+        }
+        .cut{
+            background-color: #ff9308;
+            border-radius: 10px;
+            height: 20px;
+            left: 20px;
+            position: absolute;
+            top: -20px;
+            transform: translateY(0);
+            transition: transform 200ms;
+            width: 76px;
+        }
+        .input:focus ~ .cut,
+        .input:not(:placeholder-shown) ~ .cut{
+            transform: translateY(8px);
+        }
+        .placeholder{
+            color: #f40;
+            font-family: sans-serif;
+            font-size: 14px;
+            left: 20px;
+            line-height: 14px;
+            pointer-events: none;
+            position: absolute;
+            transform-origin: 0 50%;
+            transition: transform 200ms, color 200ms;
+            top: 20px;
+        }
+        .input:focus ~ .placeholder,
+        .input:not(:placeholder-shown) ~ .placeholder{
+            transform: translateY(-30px) translateX(10px) scale(0.75);
+        }
+        .input:not(:placeholder-shown) ~ .placeholder{
+            color: #999;
+        }
+        .input:focus ~ .placeholder{
+            color: #fff;
+        }
+        .submit{
+            background-color: #f40;
+            border-radius: 12px;
+            border: 0;
+            box-sizing: border-box;
+            color: #eee;
+            cursor: pointer;
+            font-size: 18px;
+            height: 50px;
+            margin-top: 25px;
+            outline: 0;
+            text-align: center;
+            width: 100%;
+        }
+        .submit:active{
+            background-color: #f63;
+        }
+        .alipay{
+            margin-top: 10px;
+        }
+        .alipay img{
+            width: 20px;
+            background-color: white;
+            border-radius: 50%;
+        }
+        .forgot{
+            margin-top: 10px;
+        }
+        .forgot-name{
+            margin-right: 10px;
+        }
+        .forgot-password{
+            margin-right: 3px;
+        }
+        .top{
+            width: 1170px;
+            height: 110px;
+            clear: both;
+            content: '';
+            display: block;
+        }
+        .top img{
+            width: 110px;
+            margin-left: 65px;
+            margin-top: 30px;
+        }
+        .background-img{
+            float: left;
+            margin-left: 67px;
+            width: 823px;
+            height: 500px;
+            border-radius: 20px 0 0 20px;
+        }
+        .main{
+            width: 1300px;
+            margin: 0 auto;
+        }
+        .footer{
+            width: 100% !important;
+            max-width: 1600px !important;
+            min-height: 155px;
+            margin-top: 100px;
+            padding-bottom: 9px;
+            background-color: #fff;
+            font-size: 12px;
+            display: inline-block !important;
+        }
+        .footer .footer-hd{
+            padding-top: 12px;
+            padding-bottom: 10px;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            line-height: 27px;
+            text-align: center;
+        }
+        .footer .footer-hd a{
+            color: #6c6c6c;
+            font-size: 13px;
+        }
+        .footer .footer-hd b{
+            color: #ddd;
+            margin: 0 3px;
+            font-size: 13px;
+        }
+        .footer .footer-bd p{
+            line-height: 27px;
+            margin: 0 3px;
+            color: #6c6c6c;
+        }
+        .footer .footer-bd b{
+            color: #ddd;
+        }
+        .footer .footer-bd em{
+            color: #9c9c9c;
+        }
+        .footer .footer-bd .ft-color{
+            color: #9c9c9c;
+        }
+        .footer a:hover{
+            color: #f40;
+        }
+        .footer .footer-hd, .footer .footer-bd, .footer .footer-ft{
+            width: 1190px;
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .foot-img{
+            display: block;
+            margin-right: 200px;
+        }
+        .footer .footer-ft .foot-img img{
+            width: 970px;
+            height: 77px;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="top">
+        <a href="../index.html"><img src="../img/logo1.png" alt="淘宝logo"></a>
+        <div class="iconfont fr">&#xe651;
+            <a href="404.html">"登录页面"改进建议</a>
+        </div>
+    </div>
+    
+    <img class="background-img" src="../img/denglu.png" alt="淘宝背景">
+
+    <div class="form">
+
+        <div class="QR">
+            <img src="../img/erweima.png" alt="">
+            <a href="404.html"><div class="triangle"></div></a>
+            <div class="QR-word-triangle"></div>
+            <div class="QR-word">
+                扫码登录更安全
+            </div>
+        </div>
+
+        <div class="title">欢迎登录淘宝</div>
+        <div class="subtitle">填写以下信息</div>
+        <div class="input-container ic1">
+            <input id="name" class="input" type="text" placeholder=" " />
+            <div class="cut"></div>
+            <label for="name" class="placeholder">电话号码</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="phone" class="input" type="text" placeholder=" " />
+            <div class="cut"></div>
+            <label for="phone" class="placeholder">登陆密码</label>
+        </div>
+        <div class="input-container ic2">
+            <input id="number" class="input" type="text" placeholder=" " />
+            <div class="cut"></div>
+            <label for="number" class="placeholder">短信验证码 </label>
+        </div>
+        <button type="submit" class="submit">登录</button>
+        <div class="alipay fl"><img src="../img/zfb.png" alt=""><a href="404.html">支付宝登录</a></div>
+        <div class="forgot">
+            <a class="forgot-password fr"  href="404.html">忘记密码</a><a class="forgot-name fr"  href="404.html">忘记用户名</a>
+        </div>
+    </div>
+</div>
+
+<!-- 底部信息 -->
+    <div class="footer">
+        <div class="footer-hd">
+            <span><a href="404.html" rel="noopener noreferrer">阿里巴巴集团</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">阿里巴巴国际站</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">阿里巴巴中国站</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">全球速卖通</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">淘宝网</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">天猫</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">聚划算</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">一淘</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">阿里妈妈</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">飞猪</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">虾米</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">阿里云计算</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">云OS</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">万网</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">支付宝</a></span><b>|</b>
+            <span><a href="404.html" rel="noopener noreferrer">来往</a></span><b>|</b>
+        </div>
+        <div class="footer-bd">
+            <p>
+                <span><a href="404.html" rel="noopener noreferrer">关于淘宝</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">合作伙伴</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">营销中心</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">廉正举报</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">联系客服</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">开放平台</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">诚征英才</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">联系我们</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">网站地图</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">隐私权政策</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">法律声明</a></span>
+                <span><a href="404.html" rel="noopener noreferrer">知识产权</a></span>
+                <b>|</b> <em>© 2003-现在 Taobao.com 版权所有</em>
+            </p>
+            <p class="ft-color">
+                <span><a href="404.html" rel="noopener noreferrer">增值电信业务经营许可证：浙B2-20080224</a></span><b>|</b>
+                <span><a href="404.html" rel="noopener noreferrer">增值电信业务经营许可证（跨地区）： B2-20150210</a></span><b>|</b>
+                <span><a href="404.html" rel="noopener noreferrer">浙网文（2019）1033-086号</a></span><b>|</b>
+                <span>浙江省网络食品销售第三方平台提供者备案：浙网食A33010001</span>
+            </p>
+            <p class="ft-color">
+                <span>互联网药品信息服务资格证书（浙）-经营性-2018-0010</span><b>|</b>
+                <span>短消息类服务接入代码使用证书：号【2016】00154-A01</span><b>|</b>
+                <span>信息网络传播视听许可证：1109364号</span><b>|</b>
+                <span>出版物网络交易平台服务经营备案号：新出发浙备字第002号</span>
+            </p>
+            <p class="ft-color">
+                    <span>
+                        <a href="404.html" rel="noopener noreferrer"><img src="../img/gong-an.png" alt="">
+                            <span class="footer-mod" style="background-position:-861px 0; width:20px; height: 20px;"></span>
+                            浙公网安备 33010002000078号
+                        </a>
+                    </span><b>|</b>
+                <span>广播电视节目制作经营许可证（浙）字第01012号</span><b>|</b>
+                <span>市场名称登记证：工商网市字3301004120号</span><b>|</b>
+                <span>医疗器械网络交易服务第三方平台备案：（浙）网械平台备字[2018]第00004号</span>
+            </p>
+        </div>
+    
+        <div class="footer-ft">
+                <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:0 0; width:36px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:0 0; width:30px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:-40px 0; width:33px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:-80px 0; width:50px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:-140px 0; width:83px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:0 -18px; width:250px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:-650px 0; width:105px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:-345px 0; width:82px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:-761px 0; width:97px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:-884px 0; width:249px;">
+                    </a>
+                </span>
+            <span>
+                    <a href="404.html" class="footer-mod" rel="noopener noreferrer" style="background-position:0 0; width:249px;">
+                    </a>
+                </span>
+            <a class="foot-img"  href="404.html"><img src="../img/footimg.png" alt=""></a>
+        </div>
+    </div>
+
+</body>
+</html>
